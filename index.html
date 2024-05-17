@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthy Life</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body background="palno de fundo-1ecdc59d0ad4.jpg">
+  <div class="chat-container">
+   <img src="Nala.jpeg" alt="Foto de Nala" class="avatar">
+    <div class="chat-box" id="chat-box">
+      <div class="chat-message bot">Olá! Eu sou a Nala, sua assistente virtual de Saúde. Como posso ajudar você?</div>
+    </div>
+    <form id="health-form" class="chat-form">
+      <input type="text" id="user-input" placeholder="Digite sua pergunta...">
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById('chat-box');
+    const healthForm = document.getElementById('health-form');
+    const userInput = document.getElementById('user-input');
+
+    healthForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const userQuestion = userInput.value.trim();
+      if (userQuestion === '') return;
+
+      appendUserMessage(userQuestion);
+      getBotResponse(userQuestion);
+      userInput.value = '';
+    });
+
+    function appendUserMessage(message) {
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('chat-message', 'user');
+      messageElement.innerText = message;
+      chatBox.appendChild(messageElement);
+    }
+
+    function appendBotMessage(message) {
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('chat-message', 'bot');
+      messageElement.innerText = message;
+      chatBox.appendChild(messageElement);
+    }
+
+    function getBotResponse(question) {
+      // Aqui você pode adicionar lógica para responder às perguntas do usuário
+      // Por exemplo, você pode ter um conjunto de respostas pré-definidas para diferentes perguntas
+      // Para este exemplo simples, vamos apenas enviar uma resposta genérica
+      const botResponse = 'Obrigado por sua pergunta. Um especialista em saúde entrará em contato em breve.';
+      setTimeout(function() {
+        appendBotMessage(botResponse);
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
